@@ -1,0 +1,403 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #111;
+    line-height: 1.6;
+    background-color: #f5f0e8;
+}
+
+nav {
+    background-color: #f5f0e8;
+    padding: 20px 30px;
+    border-bottom: 1px solid #e0d8c8;
+    text-align: center;
+}
+
+nav a {
+    color: #111;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+nav a:hover {
+    color: #888;
+}
+
+main {
+    padding: 40px 30px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 20px;
+    text-align: center;
+}
+
+h2 {
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-top: 50px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+}
+
+h3 {
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-top: 30px;
+    text-align: center;
+}
+
+main h3 + a,
+main h3 + img {
+    display: inline-block;
+    margin: 15px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    transition: opacity 0.2s ease;
+}
+
+a:has(img):hover img,
+img:hover {
+    opacity: 0.85;
+}
+
+p {
+    text-align: center;
+    color: #444;
+    font-size: 0.95rem;
+}
+
+footer {
+    background-color: #111;
+    color: #fff;
+    padding: 40px 30px;
+    margin-top: 60px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px 40px;
+}
+
+footer h3 {
+    margin: 0;
+    text-align: left;
+}
+
+footer a {
+    color: #fff;
+    text-decoration: none;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+}
+
+footer a:hover {
+    color: #ccc;
+}
+
+footer p {
+    grid-column: 1 / -1;
+    text-align: left;
+    color: #999;
+    margin-top: 20px;
+}
+
+form {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+form label {
+    display: block;
+    margin-top: 18px;
+    font-weight: 600;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+form input,
+form select,
+form textarea {
+    padding: 10px;
+    width: 100%;
+    max-width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-top: 5px;
+    font-size: 0.9rem;
+}
+
+fieldset {
+    margin-top: 18px;
+    border: 1px solid #ccc;
+    padding: 15px;
+}
+
+legend {
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+button {
+    margin-top: 20px;
+    padding: 12px 30px;
+    background-color: #111;
+    color: #fff;
+    border: none;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+button:hover {
+    background-color: #444;
+}
+
+button[type="reset"] {
+    background-color: #fff;
+    color: #111;
+    border: 1px solid #111;
+}
+
+button[type="reset"]:hover {
+    background-color: #f5f5f5;
+}
+
+.categorias-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.categoria-item {
+    text-align: center;
+    width: 220px;
+}
+
+.categoria-item img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+}
+.categoria-item.promo img {
+    object-fit: contain;
+    background-color: #fff;
+}
+
+.acordeon-pregunta {
+    display: block;
+    width: 100%;
+    text-align: left;
+    background-color: #fff;
+    color: #111;
+    border: 1px solid #ddd;
+    padding: 15px 20px;
+    margin-top: 10px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-transform: none;
+    letter-spacing: normal;
+}
+
+.acordeon-pregunta:hover {
+    background-color: #f0ece4;
+}
+
+.acordeon-respuesta {
+    display: none;
+    padding: 10px 20px;
+    text-align: left;
+    background-color: #faf7f2;
+    border: 1px solid #ddd;
+    border-top: none;
+    margin: 0;
+}
+
+.acordeon-respuesta.mostrar {
+    display: block;
+}
+.galeria {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.galeria img {
+    max-width: 300px;
+    height: auto;
+    display: block;
+    margin: 15px auto;
+}
+
+.galeria button {
+    margin: 0 10px;
+}
+.galeria img {
+    cursor: pointer;
+}
+
+.modal-oculto {
+    display: none;
+}
+
+.modal-visible {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal-visible img {
+    max-width: 90%;
+    max-height: 85vh;
+}
+
+#cerrar-modal {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #fff;
+    font-size: 2.5rem;
+    cursor: pointer;
+}
+
+body.oscuro {
+    background-color: #1a1a1a;
+    color: #eee;
+}
+
+body.oscuro nav,
+body.oscuro main {
+    background-color: #1a1a1a;
+    color: #eee;
+}
+
+body.oscuro nav a {
+    color: #eee;
+}
+
+body.oscuro .categoria-item h3,
+body.oscuro h1,
+body.oscuro h2,
+body.oscuro h3 {
+    color: #eee;
+}
+
+body.oscuro p {
+    color: #bbb;
+}
+
+#btn-modo-oscuro {
+    margin-left: 15px;
+    padding: 6px 14px;
+    background-color: transparent;
+    border: 1px solid #111;
+    color: #111;
+    font-size: 0.8rem;
+    text-transform: none;
+    letter-spacing: normal;
+}
+
+body.oscuro #btn-modo-oscuro {
+    border-color: #eee;
+    color: #eee;
+}
+.galeria-blog {
+    text-align: center;
+}
+
+.img-blog {
+    width: 240px;
+    height: 300px;
+    object-fit: cover;
+    margin: 0 10px;
+}
+
+.galeria-curso {
+    text-align: center;
+    margin: 15px 0;
+}
+
+.img-curso {
+    width: 220px;
+    height: 220px;
+    object-fit: cover;
+    margin: 0 8px;
+    border-radius: 6px;
+}
+
+.img-curso-chica {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin: 0 8px;
+    border-radius: 6px;
+}
+
+.galeria-pagina {
+    text-align: center;
+    margin: 15px 0;
+}
+
+.img-pagina {
+    width: 220px;
+    height: auto;
+    border-radius: 6px;
+}
+
+.boton-cv {
+    display: inline-block;
+    background-color: #1a1a1a;
+    color: #fff;
+    text-decoration: none;
+    padding: 12px 30px;
+    border-radius: 6px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    transition: background-color 0.2s ease;
+}
+
+.boton-cv:hover {
+    background-color: #444;
+}
+
+.contenedor-boton {
+    text-align: center;
+    margin: 25px 0;
+}

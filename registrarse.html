@@ -4,19 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrarse - TF</title>
+    <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
     <h1>Registrarse</h1>
 
-    <form action="/registrar" method="post">
+    <form action="/registrar" method="post" id="formRegistro" novalidate>
         <p>
             <label for="nombre">Nombre:</label><br>
             <input type="text" id="nombre" name="nombre" placeholder="Ingresá tu nombre" minlength="3" maxlength="40" required>
+            <br><span id="error-nombre" style="color:red; font-size:0.85rem;"></span>
         </p>
 
         <p>
             <label for="email">Correo electrónico:</label><br>
             <input type="email" id="email" name="email" placeholder="ejemplo@correo.com" required>
+            <br><span id="error-email" style="color:red; font-size:0.85rem;"></span>
         </p>
 
         <p>
@@ -51,10 +54,12 @@
         </p>
 
         <p>
-            Género:<br>
-            <label><input type="radio" name="genero" value="femenino"> Femenino</label><br>
-            <label><input type="radio" name="genero" value="masculino"> Masculino</label><br>
-            <label><input type="radio" name="genero" value="otro"> Otro</label>
+            <fieldset>
+                <legend>Género</legend>
+                <label><input type="radio" name="genero" value="femenino"> Femenino</label><br>
+                <label><input type="radio" name="genero" value="masculino"> Masculino</label><br>
+                <label><input type="radio" name="genero" value="otro"> Otro</label>
+            </fieldset>
         </p>
 
         <p>
@@ -73,6 +78,13 @@
             <button type="submit">Registrarme</button>
             <button type="reset">Borrar</button>
         </p>
+
+        <div id="resumen" style="display:none; margin-top:20px; padding:15px; border:1px solid #ccc;">
+            <h3>Resumen de tus datos</h3>
+            <p><strong>Nombre:</strong> <span id="resumen-nombre"></span></p>
+            <p><strong>Email:</strong> <span id="resumen-email"></span></p>
+            <p><strong>Talle:</strong> <span id="resumen-talle"></span></p>
+        </div>
     </form>
 
     <hr>
@@ -80,5 +92,7 @@
         <p><a href="index.html">Volver al inicio</a></p>
         <p>TF - Todos los derechos reservados</p>
     </footer>
+
+    <script src="js/script.js"></script>
 </body>
 </html>
