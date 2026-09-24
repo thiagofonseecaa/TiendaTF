@@ -33,7 +33,7 @@
 
     <hr>
     <footer>
-        <p><a href="index.html">Volver al inicio</a></p>
+        <p><a href="index.php">Volver al inicio</a></p>
         <p>TF - Sección Blog</p>
     </footer>
 </body>

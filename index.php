@@ -11,13 +11,13 @@
     <a href="#main-content" style="position:absolute; left:-9999px;">Saltar al contenido principal</a>
 
     <nav>
-        <a href="index.html">TF</a> |
-        <a href="hombre.html">Hombre</a> |
-        <a href="mujer.html">Mujer</a> |
-        <a href="niños.html">Niño/a</a> |
-        <a href="descuentos.html">Descuentos</a> |
-        <a href="registrarse.html">Registrarse</a> |
-        <a href="carrito.html">Carrito</a>
+        <a href="index.php">TF</a> |
+        <a href="hombre.php">Hombre</a> |
+        <a href="mujer.php">Mujer</a> |
+        <a href="niños.php">Niño/a</a> |
+        <a href="descuentos.php">Descuentos</a> |
+        <a href="registrarse.php">Registrarse</a> |
+        <a href="carrito.php">Carrito</a>
         <button id="btn-modo-oscuro"> Modo oscuro</button>
     </nav>
     <hr>
@@ -31,19 +31,19 @@
         <div class="categorias-grid">
             <div class="categoria-item">
                 <h3>Hombre</h3>
-                <a href="hombre.html"><img src="imagenes/hombre.png" alt="Ropa Urbana para Hombre"></a>
+                <a href="hombre.php"><img src="imagenes/hombre.png" alt="Ropa Urbana para Hombre"></a>
             </div>
             <div class="categoria-item">
                 <h3>Mujer</h3>
-                <a href="mujer.html"><img src="imagenes/mujer.png" alt="Ropa Urbana para Mujer"></a>
+                <a href="mujer.php"><img src="imagenes/mujer.png" alt="Ropa Urbana para Mujer"></a>
             </div>
             <div class="categoria-item">
                 <h3>Niño/a</h3>
-                <a href="niños.html"><img src="imagenes/niños.png" alt="Ropa Urbana para Niño/a"></a>
+                <a href="niños.php"><img src="imagenes/niños.png" alt="Ropa Urbana para Niño/a"></a>
             </div>
             <div class="categoria-item">
                 <h3>Accesorios</h3>
-                <a href="accesorios.html"><img src="imagenes/accesorios.png" alt="Accesorios"></a>
+                <a href="accesorios.php"><img src="imagenes/accesorios.png" alt="Accesorios"></a>
             </div>
         </div>
 
@@ -57,14 +57,14 @@
 
     <hr>
     <footer>
-        <h3><a href="blog.html">Novedades</a></h3>
-        <h3><a href="ayuda.html">Ayuda</a></h3>
-        <h3><a href="redes-sociales.html">Redes Sociales</a></h3>
-        <h3><a href="quienes-somos.html">Quiénes somos</a></h3>
-        <h3><a href="preguntas-frecuentes.html">Preguntas Frecuentes</a></h3>
-        <h3><a href="guia-de-talles.html">Guía de talles</a></h3>
-        <h3><a href="curso.html">Curso: Styling Urbano</a></h3>
-        <h3><a href="cv.html">Trabajá con nosotros</a></h3>
+        <h3><a href="blog.php">Novedades</a></h3>
+        <h3><a href="ayuda.php">Ayuda</a></h3>
+        <h3><a href="redes-sociales.php">Redes Sociales</a></h3>
+        <h3><a href="quienes-somos.php">Quiénes somos</a></h3>
+        <h3><a href="preguntas-frecuentes.php">Preguntas Frecuentes</a></h3>
+        <h3><a href="guia-de-talles.php">Guía de talles</a></h3>
+        <h3><a href="curso.php">Curso: Styling Urbano</a></h3>
+        <h3><a href="cv.php">Trabajá con nosotros</a></h3>
         <p>TF - Todos los derechos reservados</p>
     </footer>
     <script src="js/script.js"></script>

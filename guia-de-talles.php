@@ -21,7 +21,7 @@ Talle ARG   Talle US     CM
 
     <hr>
     <footer>
-        <p><a href="index.html">Volver al inicio</a></p>
+        <p><a href="index.php">Volver al inicio</a></p>
         <p>TF - Todos los derechos reservados</p>
     </footer>
 </body>

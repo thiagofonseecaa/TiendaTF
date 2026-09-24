@@ -11,7 +11,7 @@
     <h2>Resumen del pedido</h2>
     <hr>
     <footer>
-        <p><a href="index.html">Seguir comprando</a></p>
+        <p><a href="index.php">Seguir comprando</a></p>
         <p>TF - Todos los derechos reservados</p>
     </footer>
     <script src="js/script.js"></script>
