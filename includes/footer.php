@@ -7,7 +7,7 @@
     <h3><a href="guia-de-talles.php">Guía de talles</a></h3>
     <h3><a href="curso.php">Curso: Styling Urbano</a></h3>
     <h3><a href="cv.php">Trabajá con nosotros</a></h3>
-    <p>© <?= date("Y"); ?> TF Clothing - Todos los derechos reservados</p>
+<p>© <?= date("Y"); ?> <?= htmlspecialchars($nombre_sitio, ENT_QUOTES, 'UTF-8'); ?> - Todos los derechos reservados</p>
 </footer>
 
 <script src="js/script.js"></script>
