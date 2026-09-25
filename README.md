@@ -1,6 +1,6 @@
 # TF Clothing — Trabajo Práctico N° 4
 
-Tienda de ropa urbana de Salta desarrollada para la materia Programación Web.
+Trabajo práctico de la materia Adaptación al Ambiente del Trabajo (AAT).
 
 En este trabajo migré las 16 páginas de HTML a PHP y separé el encabezado, el menú y el pie de página en archivos compartidos. También incorporé títulos dinámicos, el resaltado de la sección actual y la configuración mediante un archivo .env.
 
