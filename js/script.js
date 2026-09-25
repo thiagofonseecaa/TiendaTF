@@ -1,4 +1,10 @@
-alert("¡Bienvenido/a a TF Clothing! Descubrí lo último en ropa urbana.");
+const esInicio = window.location.pathname.endsWith("/index.php")
+    || window.location.pathname.endsWith("/");
+
+if (esInicio && !sessionStorage.getItem("tfBienvenidaMostrada")) {
+    sessionStorage.setItem("tfBienvenidaMostrada", "si");
+    alert("¡Bienvenido/a a TF Clothing! Descubrí lo último en ropa urbana.");
+}
 
 const formRegistro = document.getElementById("formRegistro");
 

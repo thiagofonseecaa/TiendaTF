@@ -1,20 +1,29 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Accesorios - TF</title>
-    <link rel="stylesheet" href="css/estilos.css">
-</head>
-<body data-categoria="accesorios">
+<?php
+$titulo_pagina = "Accesorios | TF Clothing";
+$descripcion_pagina = "Descubrí los accesorios de TF Clothing para completar tu estilo urbano.";
+$categoria = "accesorios";
+
+require_once __DIR__ . '/includes/header.php';
+require_once __DIR__ . '/includes/nav.php';
+?>
+
+<hr>
+
+<main id="main-content">
     <h1>Accesorios</h1>
 
     <div class="galeria">
         <button id="btn-anterior">&#8592; Anterior</button>
+
         <div>
-            <img id="galeria-imagen" src="imagenes/gorras.png" alt="Producto accesorio">
+            <img
+                id="galeria-imagen"
+                src="imagenes/gorras.png"
+                alt="Producto accesorio"
+            >
             <p id="galeria-nombre">Gorras</p>
         </div>
+
         <button id="btn-siguiente">Siguiente &#8594;</button>
     </div>
 
@@ -23,13 +32,9 @@
         <img id="modal-imagen-grande" src="" alt="Imagen ampliada">
     </div>
 
-    <hr>
-    <footer>
-        <p><a href="index.php">Volver al inicio</a></p>
-        <p>TF - Todos los derechos reservados</p>
-    </footer>
+    <p><a href="index.php">Volver al inicio</a></p>
+</main>
 
-    <script src="js/script.js"></script>
-    <script src="js/categoria.js"></script>
-</body>
-</html>
+<hr>
+
+<?php require_once __DIR__ . '/includes/footer.php'; ?>
