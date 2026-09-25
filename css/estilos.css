@@ -401,3 +401,10 @@ body.oscuro #btn-modo-oscuro {
     text-align: center;
     margin: 25px 0;
 }
+
+nav a.active {
+    font-weight: 700;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 6px;
+}
