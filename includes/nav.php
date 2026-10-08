@@ -6,5 +6,7 @@
     <a href="descuentos.php"<?php if (basename($_SERVER['PHP_SELF']) == 'descuentos.php') echo ' class="active"'; ?>>DESCUENTOS</a> |
     <a href="registrarse.php"<?php if (basename($_SERVER['PHP_SELF']) == 'registrarse.php') echo ' class="active"'; ?>>REGISTRARSE</a> |
     <a href="carrito.php"<?php if (basename($_SERVER['PHP_SELF']) == 'carrito.php') echo ' class="active"'; ?>>CARRITO</a>
+    | <a href="clase5/buscar.php">BUSCAR PRODUCTOS</a>
+    | <a href="clase5/contacto.php">CONTACTO</a>
     <button id="btn-modo-oscuro">Modo oscuro</button>
 </nav>

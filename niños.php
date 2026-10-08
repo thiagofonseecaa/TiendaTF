@@ -18,10 +18,10 @@ require_once __DIR__ . '/includes/nav.php';
         <div>
             <img
                 id="galeria-imagen"
-                src="imagenes/remerasniños.png"
+                src="clase5/imagenes/remera-infantil.png"
                 alt="Producto de niño/a"
             >
-            <p id="galeria-nombre">Remeras</p>
+            <p id="galeria-nombre">Remera blanca infantil</p>
         </div>
 
         <button id="btn-siguiente">Siguiente &#8594;</button>
