@@ -1,27 +1,27 @@
 const datosCategorias = {
     hombre: {
         imagenes: [
-            "imagenes/remerahombre.png",
-            "imagenes/pantaloneshombre.png",
-            "imagenes/buzoshombre.png"
+            "clase5/imagenes/remera-clasica.png",
+            "clase5/imagenes/jean-recto.png",
+            "clase5/imagenes/buzo-infantil.png"
         ],
-        nombres: ["Remeras", "Pantalones", "Buzos"]
+        nombres: ["Remera azul de hombre", "Jean recto de hombre", "Buzo negro con cierre de hombre"]
     },
     mujer: {
         imagenes: [
-            "imagenes/remeramujer.png",
-            "imagenes/pantalonmujer.png",
-            "imagenes/buzosmujer.png"
+            "clase5/imagenes/remera-mujer.png",
+            "clase5/imagenes/pantalon-mujer.png",
+            "clase5/imagenes/buzo-mujer.png"
         ],
-        nombres: ["Remeras", "Pantalones", "Buzos"]
+        nombres: ["Remera blanca de mujer", "Pantalón jogger de mujer", "Buzo negro de mujer"]
     },
     niños: {
         imagenes: [
-            "imagenes/remerasniños.png",
-            "imagenes/pantalonesniños.png",
-            "imagenes/buzosniños.png"
+            "clase5/imagenes/remera-infantil.png",
+            "clase5/imagenes/pantalon-infantil.png",
+            "clase5/imagenes/buzo-clasico.png"
         ],
-        nombres: ["Remeras", "Pantalones", "Buzos"]
+        nombres: ["Remera blanca infantil", "Pantalón jogger infantil", "Buzo gris infantil"]
     },
     accesorios: {
         imagenes: [
@@ -42,6 +42,9 @@ if (galeriaImagen) {
 
     let indiceActual = 0;
     const galeriaNombre = document.getElementById("galeria-nombre");
+    galeriaImagen.src = datos.imagenes[indiceActual];
+    galeriaNombre.textContent = datos.nombres[indiceActual];
+    galeriaImagen.alt = datos.nombres[indiceActual];
     const btnAnterior = document.getElementById("btn-anterior");
     const btnSiguiente = document.getElementById("btn-siguiente");
 
@@ -49,12 +52,14 @@ if (galeriaImagen) {
         indiceActual = (indiceActual + 1) % datos.imagenes.length;
         galeriaImagen.src = datos.imagenes[indiceActual];
         galeriaNombre.textContent = datos.nombres[indiceActual];
+        galeriaImagen.alt = datos.nombres[indiceActual];
     });
 
     btnAnterior.addEventListener("click", function () {
         indiceActual = (indiceActual - 1 + datos.imagenes.length) % datos.imagenes.length;
         galeriaImagen.src = datos.imagenes[indiceActual];
         galeriaNombre.textContent = datos.nombres[indiceActual];
+        galeriaImagen.alt = datos.nombres[indiceActual];
     });
 
     const modal = document.getElementById("modal-imagen");

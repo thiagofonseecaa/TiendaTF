@@ -1,6 +1,6 @@
 # TF Clothing — Trabajo Práctico N° 4
 
-Trabajo práctico de la materia Adaptación al Ambiente del Trabajo (AAT).
+Trabajo práctico de la materia Adaptación al Ambiente del Trabajo (AAT)
 
 En este trabajo migré las 16 páginas de HTML a PHP y separé el encabezado, el menú y el pie de página en archivos compartidos. También incorporé títulos dinámicos, el resaltado de la sección actual y la configuración mediante un archivo .env.
 
@@ -107,3 +107,47 @@ El registro y el carrito forman parte de la maqueta. No se guardan usuarios ni s
 
 La migración se trabajó en la rama feature/migracion-php-ssi,
 con commits separados para las plantillas, su integración y la configuración.
+
+## Clase 5 — Procesamiento de formularios y seguridad web
+
+Incorporé dos formularios al sitio:
+
+- **Contacto (POST):** recibe nombre, correo electrónico y mensaje. Valida los campos obligatorios y el formato del correo. Si hay errores, muestra los mensajes y conserva los datos ingresados. Si los datos son válidos, muestra una confirmación y un resumen.
+- **Buscador de productos (GET):** recibe la búsqueda mediante el parámetro `q` y muestra las prendas que coinciden, con su imagen y categoría. Informa cuando la búsqueda está vacía o no encuentra resultados.
+
+El desarrollo de esta entrega está dentro de la carpeta `clase5`.
+
+### Validación y prevención de XSS
+
+Los datos recibidos se comprueban y se limpian con `trim()`. El correo se valida con `filter_var()` y `FILTER_VALIDATE_EMAIL`.
+
+Antes de mostrar los datos en HTML se utiliza `htmlspecialchars()` mediante la función `escapar()`. Así, las etiquetas ingresadas aparecen como texto y no se interpretan como código.
+
+El formulario de contacto procesa los datos para esta demostración; no envía correos ni los guarda en una base de datos.
+
+### Ejecución local
+
+Con Apache iniciado en XAMPP:
+
+- Contacto: http://localhost/TiendaTF-main/clase5/contacto.php
+- Buscador: http://localhost/TiendaTF-main/clase5/buscar.php
+
+### Capturas de funcionamiento
+
+#### Contacto: validación y conservación de los campos
+
+![Validación del formulario POST](clase5/capturas/post-validacion.png)
+
+#### Contacto: prueba de XSS
+
+El mensaje con la etiqueta `<script>` se muestra como texto.
+
+![Prueba de XSS en POST](clase5/capturas/post-xss.png)
+
+#### Buscador: resultados por GET
+
+![Resultados de búsqueda](clase5/capturas/get-resultados.png)
+
+#### Buscador: validación de búsqueda vacía
+
+![Validación del formulario GET](clase5/capturas/get-validacion.png)
