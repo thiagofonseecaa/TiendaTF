@@ -151,3 +151,22 @@ El mensaje con la etiqueta `<script>` se muestra como texto.
 #### Buscador: validación de búsqueda vacía
 
 ![Validación del formulario GET](clase5/capturas/get-validacion.png)
+
+## Clase 7 - Persistencia y conexión PHP-MySQL
+
+Agregué un módulo de gestión de productos conectado con PDO a la base `tf_tienda_tp6`. Desde la página se pueden listar y buscar productos, agregar uno nuevo, editar sus datos y eliminarlo después de confirmar.
+
+El módulo usa la tabla `productos` y sus categorías del TP6, junto con el encabezado, el menú, el pie y los estilos de TF.
+
+Todas las consultas usan `prepare()` y `execute()` con parámetros. Los datos mostrados pasan por `escapar()`, que utiliza `htmlspecialchars()`. Las modificaciones se envían mediante POST y se validan en PHP. Los errores internos se registran sin mostrarlos completos en la página.
+
+### Ejecución local del TP7
+
+1. Iniciar Apache y MySQL en XAMPP.
+2. Tener cargada la base del TP6. Si es una instalación nueva, importar primero `tp6/schema.sql` y después `tp6/consultas.sql`, una vez.
+3. Copiar `.env.example` como `.env` y completar los datos de conexión del equipo.
+4. Abrir http://localhost/TiendaTF-main/admin/index.php o entrar desde Gestión de productos en el pie del sitio.
+
+Para demostrarlo se puede crear un producto de práctica, cambiar su precio y eliminarlo desde la interfaz. Los cambios se pueden comprobar en phpMyAdmin. Un producto con pedidos asociados no se puede borrar; se informa esa restricción y se permite editar su estado.
+
+El desarrollo y las pruebas están explicados en [tp7/README.md](tp7/README.md). La pantalla de comprobación está en http://localhost/TiendaTF-main/tp7/prueba_conexion.php.

@@ -1,12 +1,18 @@
-<nav>
-    <a href="index.php"<?php if (basename($_SERVER['PHP_SELF']) == 'index.php') echo ' class="active"'; ?>>TF</a> |
-    <a href="hombre.php"<?php if (basename($_SERVER['PHP_SELF']) == 'hombre.php') echo ' class="active"'; ?>>HOMBRE</a> |
-    <a href="mujer.php"<?php if (basename($_SERVER['PHP_SELF']) == 'mujer.php') echo ' class="active"'; ?>>MUJER</a> |
-    <a href="niños.php"<?php if (basename($_SERVER['PHP_SELF']) == 'niños.php') echo ' class="active"'; ?>>NIÑO/A</a> |
-    <a href="descuentos.php"<?php if (basename($_SERVER['PHP_SELF']) == 'descuentos.php') echo ' class="active"'; ?>>DESCUENTOS</a> |
-    <a href="registrarse.php"<?php if (basename($_SERVER['PHP_SELF']) == 'registrarse.php') echo ' class="active"'; ?>>REGISTRARSE</a> |
-    <a href="carrito.php"<?php if (basename($_SERVER['PHP_SELF']) == 'carrito.php') echo ' class="active"'; ?>>CARRITO</a>
-    | <a href="clase5/buscar.php">BUSCAR PRODUCTOS</a>
-    | <a href="clase5/contacto.php">CONTACTO</a>
-    <button id="btn-modo-oscuro">Modo oscuro</button>
-</nav>
+<?php
+$base_sitio = $base_sitio ?? '';
+$pagina_actual = basename($_SERVER['SCRIPT_NAME'] ?? '');
+?>
+<header class="encabezado-tienda">
+    <nav class="nav-tienda" aria-label="Navegación principal">
+        <a class="logo-tf" href="<?= escapar($base_sitio) ?>index.php" aria-label="TF Clothing, inicio"><span>TF</span><small>CLOTHING</small></a>
+        <div class="nav-categorias">
+            <?php foreach (['clase5/buscar.php' => 'Catálogo', 'hombre.php' => 'Hombre', 'mujer.php' => 'Mujer', 'niños.php' => 'Niño/a', 'accesorios.php' => 'Accesorios', 'clase5/contacto.php' => 'Contacto'] as $ruta => $etiqueta): ?>
+                <a href="<?= escapar($base_sitio . $ruta) ?>"<?= $pagina_actual === basename($ruta) ? ' class="active"' : '' ?>><?= escapar($etiqueta) ?></a>
+            <?php endforeach; ?>
+        </div>
+        <div class="nav-acciones">
+            <button id="btn-modo-oscuro" type="button">Modo oscuro</button>
+            <a class="icono-carrito" href="<?= escapar($base_sitio) ?>carrito.php" aria-label="Carrito, <?= cantidad_carrito() ?> prendas"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 7h14l1 14H4L5 7Z M9 8V6a3 3 0 0 1 6 0v2"/></svg><span><?= cantidad_carrito() ?></span></a>
+        </div>
+    </nav>
+</header>

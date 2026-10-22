@@ -1,4 +1,6 @@
 <?php
+require_once __DIR__ . '/../clase5/tienda.php';
+$base_sitio = $base_sitio ?? '';
 require_once __DIR__ . '/../config/env.php';
 
 if (!isset($titulo_pagina)) {
@@ -16,7 +18,8 @@ if (!isset($descripcion_pagina)) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= htmlspecialchars($titulo_pagina, ENT_QUOTES, 'UTF-8'); ?></title>
     <meta name="description" content="<?= htmlspecialchars($descripcion_pagina, ENT_QUOTES, 'UTF-8'); ?>">
-    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="<?= escapar($base_sitio) ?>css/estilos.css">
+    <link rel="stylesheet" href="<?= escapar($base_sitio) ?>css/tienda.css?v=<?= filemtime(__DIR__ . '/../css/tienda.css') ?>">
 </head>
 <body<?php if (isset($categoria)) { ?>
     data-categoria="<?= htmlspecialchars($categoria, ENT_QUOTES, 'UTF-8'); ?>"
