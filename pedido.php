@@ -1,5 +1,9 @@
 <?php
 require_once __DIR__ . '/clase5/tienda.php';
+if (esta_autenticado()) {
+    require_once __DIR__ . '/auth_guard.php';
+    verificar_rol('usuario');
+}
 // El comprobante pertenece a esta sesión: no se acepta un id desde la URL.
 $id = $_SESSION['pedido_confirmado']['id'] ?? 0;
 $consulta = $pdo->prepare('SELECT p.codigo, p.nombre_cliente, p.created_at, e.nombre AS estado

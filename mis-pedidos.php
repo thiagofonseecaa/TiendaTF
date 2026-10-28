@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/auth_guard.php';
+verificar_rol('usuario');
 $titulo_pagina = 'Mis pedidos | TF Clothing';
 $pedidos = [];
 $seleccion = null;

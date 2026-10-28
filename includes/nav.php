@@ -12,8 +12,10 @@ $pagina_actual = basename($_SERVER['SCRIPT_NAME'] ?? '');
         </div>
         <div class="nav-acciones">
             <button id="btn-modo-oscuro" type="button">Modo oscuro</button>
-            <a class="icono-cuenta" href="<?= escapar($base_sitio) ?><?= esta_autenticado() ? 'cuenta.php' : 'login.php' ?>" aria-label="<?= esta_autenticado() ? 'Mi cuenta' : 'Iniciar sesión' ?>"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21v-2a8 8 0 0 1 16 0v2"/></svg></a>
+            <a class="icono-cuenta" href="<?= escapar($base_sitio) ?><?= esta_autenticado() ? 'cuenta.php' : 'login.php' ?>" aria-label="<?= es_administrador() ? 'Panel de administración' : (esta_autenticado() ? 'Mi cuenta' : 'Iniciar sesión') ?>"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21v-2a8 8 0 0 1 16 0v2"/></svg></a>
+            <?php if (!es_administrador()): ?>
             <a class="icono-carrito" href="<?= escapar($base_sitio) ?>carrito.php" aria-label="Carrito, <?= cantidad_carrito() ?> prendas"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 7h14l1 14H4L5 7Z M9 8V6a3 3 0 0 1 6 0v2"/></svg><span><?= cantidad_carrito() ?></span></a>
+            <?php endif; ?>
         </div>
     </nav>
 </header>

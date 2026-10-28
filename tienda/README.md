@@ -5,12 +5,12 @@ El cliente puede elegir productos, armar su carrito y enviar un pedido con sus d
 ## Cómo probarlo
 
 1. Iniciar Apache y MySQL en XAMPP y abrir la tienda.
-2. Entrar a Gestión de productos desde el pie de la página. Agregar un producto con código, nombre, categoría, precio, talles y, si corresponde, una foto de la lista. Dejarlo activo.
+2. Iniciar sesión como administrador y entrar a Gestión de productos desde el pie de la página. Agregar un producto con código, nombre, categoría, precio, talles y, si corresponde, una foto de la lista. Dejarlo activo.
 3. Ir a Catálogo. El mismo producto debe aparecer con los datos que se guardaron. También se muestra en la categoría elegida.
-4. Elegir un talle y usar Agregar al carrito. Se puede modificar la cantidad o quitar el producto.
+4. Cerrar la sesión del administrador e ingresar como cliente o continuar como invitado. Elegir un talle y usar Agregar al carrito. Se puede modificar la cantidad o quitar el producto.
 5. Usar Continuar compra, completar nombre, correo y teléfono, revisar el total y confirmar el pedido.
 6. La pantalla muestra el código y el detalle del pedido. El carrito queda vacío.
-7. Volver a Gestión de productos y entrar a Ver pedidos recibidos. Ahí se puede consultar el pedido y los datos para contactar al cliente.
+7. Iniciar sesión como administrador y entrar a Ver pedidos recibidos. Ahí se puede consultar el pedido y los datos para contactar al cliente.
 
 El recorrido registra un pedido en MySQL. No cobra tarjetas, no envía correos automáticos y no descuenta stock: esas funciones todavía no están implementadas. Los precios siguen siendo orientativos para la presentación. Desde el TP8, la gestión requiere una cuenta administradora y cada cliente puede consultar los pedidos realizados con su sesión iniciada. La preparación del acceso se explica en [TP8](../tp8/README.md).
 
@@ -21,7 +21,7 @@ El recorrido registra un pedido en MySQL. No cobra tarjetas, no envía correos a
 - pedidos: código, estado y datos de contacto de la compra.
 - detalle_pedidos: productos elegidos, talles, cantidades y precio unitario de ese momento.
 
-La compra puede hacerse como invitado o con una cuenta iniciada. El pedido usa el usuario_id de la sesión cuando corresponde; comprar no crea cuentas ni cambia los usuarios existentes. Por eso usuario_id permite NULL en los pedidos nuevos. El contacto que se ingresa queda asociado al pedido. Los pedidos anteriores del TP6 conservan su usuario.
+La compra puede hacerse como invitado o con una cuenta cliente iniciada. La cuenta administradora se usa para gestionar productos y consultar pedidos recibidos; no tiene acceso al carrito ni a confirmar compras. El pedido usa el usuario_id de la sesión cuando corresponde; comprar no crea cuentas ni cambia los usuarios existentes. Por eso usuario_id permite NULL en los pedidos nuevos. El contacto que se ingresa queda asociado al pedido. Los pedidos anteriores del TP6 conservan su usuario.
 
 ## Archivos principales
 

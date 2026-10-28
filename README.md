@@ -181,6 +181,6 @@ El recorrido, los archivos y la actualización de la base están explicados en [
 
 ## TP8 - Sesiones y autenticación
 
-El registro guarda usuarios con contraseña hasheada. El login verifica la contraseña con password_verify(), regenera el identificador de sesión y permite entrar según el rol. Mi cuenta y Mis pedidos requieren sesión; Gestión de productos y el listado general de pedidos requieren administrador. El cierre de sesión elimina los datos y su cookie.
+El registro guarda usuarios con contraseña hasheada. El login verifica la contraseña con password_verify(), regenera el identificador de sesión y permite entrar según el rol. Mi cuenta requiere sesión y muestra las opciones según el rol. Mis pedidos y las compras corresponden al cliente; Gestión de productos y el listado de pedidos recibidos requieren administrador. El administrador puede revisar el catálogo, pero no comprar desde esa cuenta. El cierre de sesión elimina los datos y su cookie.
 
 Se ingresa desde el icono de cuenta o Iniciar sesión en el pie de la tienda. La explicación paso a paso, la preparación del administrador y las pruebas están en [TP8](tp8/README.md).

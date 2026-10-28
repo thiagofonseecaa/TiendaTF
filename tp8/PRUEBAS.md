@@ -30,3 +30,15 @@ Los productos, categorías, talles, roles, usuarios y pedidos que ya existían c
 Crear una cuenta, ingresar, agregar una prenda al carrito y confirmar un pedido. Revisarlo en Mis pedidos. En otro navegador o con otra cuenta, intentar abrir su id: no debe mostrarse. Intentar entrar a Gestión como cliente: debe responder acceso denegado. Ingresar con la cuenta administradora para comprobar el CRUD y el listado general. Finalmente cerrar sesión y volver a abrir una página privada.
 
 La restricción por rol se prueba escribiendo la URL y enviando solicitudes: no alcanza con comprobar que el enlace esté oculto.
+
+## Separación entre cliente y administrador
+
+El 28/10/2026 se revisó el recorrido de cada rol:
+
+- El cliente mantiene el carrito, la compra y Mis pedidos. No puede entrar a la gestión.
+- El administrador ve su Panel de administración, Gestionar productos y Ver pedidos recibidos. En el catálogo consulta precios y talles, sin formularios de compra ni icono de carrito.
+- Las páginas carrito.php, finalizar-compra.php, pedido.php y mis-pedidos.php rechazan al administrador con HTTP 403 por GET y POST. Los intentos no guardan pedidos ni cambian registros.
+- Los cambios de rol en MySQL se aplican en la misma sesión. Un cliente sigue sin poder consultar pedidos ajenos.
+- La compra como invitado continúa disponible.
+
+Se probaron compras con cuentas y pedidos temporales. Al terminar se retiraron esos registros y se compararon los datos anteriores para comprobar que se conservaran. Los archivos PHP modificados pasaron la revisión de sintaxis.

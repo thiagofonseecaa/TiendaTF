@@ -1,5 +1,9 @@
 <?php
 require_once __DIR__ . '/clase5/tienda.php';
+if (esta_autenticado()) {
+    require_once __DIR__ . '/auth_guard.php';
+    verificar_rol('usuario');
+}
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $accion = obtener_campo($_POST, 'accion');
     $id = obtener_campo($_POST, 'producto');

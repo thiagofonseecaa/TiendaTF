@@ -6,7 +6,9 @@
             <p class="categoria-producto"><?= escapar($producto['categoria']) ?></p>
             <h3><?= escapar($producto['nombre']) ?></h3>
             <p class="precio-producto"><?= escapar(precio_ars($producto['precio'])) ?></p>
-            <?php if ($producto['talles']): ?>
+            <?php if (es_administrador()): ?>
+                <p>Talles: <?= escapar(implode(', ', $producto['talles']) ?: 'Sin talles cargados') ?></p>
+            <?php elseif ($producto['talles']): ?>
             <form class="form-compra" method="post" action="<?= escapar($base_sitio) ?>carrito.php">
                 <input type="hidden" name="csrf" value="<?= escapar($_SESSION['csrf']) ?>">
                 <input type="hidden" name="accion" value="agregar">

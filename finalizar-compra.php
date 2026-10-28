@@ -1,6 +1,9 @@
 <?php
 require_once __DIR__ . '/clase5/tienda.php';
-if (esta_autenticado()) require_once __DIR__ . '/auth_guard.php';
+if (esta_autenticado()) {
+    require_once __DIR__ . '/auth_guard.php';
+    verificar_rol('usuario');
+}
 $es_post = $_SERVER['REQUEST_METHOD'] === 'POST';
 $nombre = $es_post ? obtener_campo($_POST, 'nombre') : ($_SESSION['usuario_nombre'] ?? '');
 $email = $es_post ? obtener_campo($_POST, 'email') : ($_SESSION['usuario_email'] ?? '');

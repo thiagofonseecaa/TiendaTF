@@ -13,7 +13,7 @@ La consigna muestra una estructura recomendada con rol dentro de usuarios. En TF
 | roles.nombre en MySQL | $_SESSION['rol'] | Acceso |
 | --- | --- | --- |
 | cliente | usuario | Mi cuenta y sus propios pedidos |
-| administrador | admin | Mi cuenta, productos y pedidos de la tienda |
+| administrador | admin | Panel de administración, productos y pedidos recibidos |
 
 tp8/verificar_base.sql permite revisar las columnas, el índice único del correo y los usuarios con su rol. Es un archivo de consulta; no cambia los datos.
 
@@ -62,7 +62,8 @@ En las páginas de administración se llama además a verificar_rol('admin'). Un
 | Página | Quién puede entrar |
 | --- | --- |
 | cuenta.php | Usuario autenticado |
-| mis-pedidos.php | Usuario autenticado; consulta solo sus pedidos |
+| mis-pedidos.php | Cliente autenticado; consulta solo sus pedidos |
+| carrito.php, finalizar-compra.php y pedido.php | Cliente o invitado; el administrador no puede comprar |
 | admin/index.php | Administrador |
 | admin/crear.php | Administrador |
 | admin/editar.php | Administrador |
@@ -71,6 +72,8 @@ En las páginas de administración se llama además a verificar_rol('admin'). Un
 | tp7/prueba_conexion.php | Administrador |
 
 Los archivos auxiliares de admin también comprueban el acceso. El enlace Gestión de productos se muestra únicamente al administrador. La protección se realiza en PHP antes de procesar datos; ocultar el enlace es solo una parte de la presentación.
+
+El administrador usa un panel con Gestionar productos y Ver pedidos recibidos. No se le muestran Mis pedidos, el carrito ni los formularios de compra. Las páginas de compra también comprueban el rol en PHP, por lo que no puede enviar un pedido desde esa cuenta escribiendo la URL. Puede recorrer el catálogo para revisar los productos.
 
 Las consultas de mis-pedidos.php filtran por el usuario_id de la sesión, incluso cuando se solicita el detalle por id. Un usuario no puede consultar el pedido de otro cambiando la URL.
 
@@ -100,7 +103,7 @@ Primero se registra una cuenta propia desde la página. Después, en la terminal
 
 La herramienta busca esa cuenta y le asigna el rol administrador. No recibe ni cambia contraseñas. Solo funciona en la terminal; por HTTP responde 404.
 
-Al volver a iniciar sesión con esa cuenta, se abre Gestión de productos. Desde el icono de cuenta se puede entrar a Mi cuenta, consultar pedidos y cerrar sesión.
+Al volver a iniciar sesión con esa cuenta, se abre Gestión de productos. Desde el icono de cuenta se puede entrar al Panel de administración, consultar los pedidos recibidos y cerrar sesión. Para probar la compra se usa otra cuenta con rol cliente o se cierra sesión y se compra como invitado.
 
 ## Archivos
 
@@ -109,7 +112,8 @@ Al volver a iniciar sesión con esa cuenta, se abre Gestión de productos. Desde
 - registro.php: validación y alta con hash.
 - login.php: comprobación de contraseña y apertura del acceso.
 - auth_guard.php: protección de páginas y verificación de rol.
-- cuenta.php y mis-pedidos.php: vistas privadas del cliente.
+- cuenta.php: muestra las opciones que corresponden al rol.
+- mis-pedidos.php: compras propias del cliente.
 - logout.php: eliminación de la sesión y de su cookie.
 - tp8/asignar_admin.php: asignación del administrador desde la terminal.
 - tp8/verificar_base.sql: revisión del esquema ya existente.
