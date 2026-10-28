@@ -150,3 +150,19 @@ body.oscuro .nota-precios,body.oscuro .pasos-compra { color:#c8c2b8; }
     .nosotros-imagen img { max-width:300px; margin:0 auto; }
     .pagina-nosotros h1 { font-size:30px; }
 }
+
+/* Cuenta de usuario */
+.pagina-acceso { max-width:680px; padding:40px 24px; }
+.pagina-acceso h1 { text-align:left; text-transform:none; letter-spacing:-.5px; font-size:32px; margin:12px 0; }
+.pagina-acceso p { text-align:left; }
+.form-acceso { max-width:none; margin:24px 0; }
+.form-acceso label { text-transform:none; letter-spacing:0; }
+.form-acceso button { width:100%; letter-spacing:0; text-transform:none; }
+.campos-cuenta { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+.pagina-acceso a { color:inherit; text-underline-offset:4px; }
+.pagina-acceso .aviso ul { padding-left:20px; margin:0; }
+.panel-cuenta { display:flex; gap:16px; align-items:center; flex-wrap:wrap; margin:24px 0; }
+.form-salir { margin:0; }
+.form-salir button { margin:0; text-transform:none; letter-spacing:0; }
+.icono-cuenta { display:flex; align-items:center; }
+@media(max-width:600px) { .campos-cuenta { grid-template-columns:1fr; gap:0; } }
