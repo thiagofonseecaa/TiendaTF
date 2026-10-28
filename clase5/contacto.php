@@ -1,5 +1,6 @@
 <?php
-require_once __DIR__ . '/funciones.php';
+require_once __DIR__ . '/tienda.php';
+$base_sitio = '../';
 
 $datos = [
     'nombre' => '',
@@ -40,21 +41,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 $titulo_pagina = 'Contacto | TF Clothing';
+require __DIR__ . '/../includes/header.php';
+require __DIR__ . '/../includes/nav.php';
 ?>
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= escapar($titulo_pagina) ?></title>
-    <link rel="stylesheet" href="../css/estilos.css">
-</head>
-<body>
-    <nav>
-        <a href="../index.php">TF</a> |
-        <a href="contacto.php" class="active">Contacto</a> |
-        <a href="buscar.php">Buscar productos</a>
-    </nav>
 
     <main id="main-content">
         <h1>Contacto</h1>
@@ -134,8 +123,4 @@ $titulo_pagina = 'Contacto | TF Clothing';
         <p><a href="../index.php">Volver a la tienda</a></p>
     </main>
 
-    <footer>
-        <p>© <?= date('Y') ?> TF Clothing</p>
-    </footer>
-</body>
-</html>
+<?php require __DIR__ . '/../includes/footer.php'; ?>

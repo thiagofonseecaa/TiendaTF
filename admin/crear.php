@@ -1,12 +1,15 @@
 <?php
 require_once __DIR__ . '/../config/conexion.php';
 require_once __DIR__ . '/../clase5/tienda.php';
+require_once __DIR__ . '/opciones-producto.php';
 
 $base_sitio = '../';
 $titulo_pagina = 'Agregar producto | TF Clothing';
 $sku = obtener_campo($_POST, 'sku');
 $nombre = obtener_campo($_POST, 'nombre');
 $descripcion = obtener_campo($_POST, 'descripcion');
+$imagen = obtener_campo($_POST, 'imagen');
+$talles = talles_recibidos($_POST);
 $categoria_id = obtener_campo($_POST, 'categoria_id');
 $precio = obtener_campo($_POST, 'precio');
 $activo = $_SERVER['REQUEST_METHOD'] === 'POST' ? obtener_campo($_POST, 'activo') : '1';
@@ -40,6 +43,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $categorias_cargadas) {
     if (mb_strlen($descripcion) > 2000) {
         $errores[] = 'La descripción no puede superar los 2000 caracteres.';
     }
+    if ($imagen !== '' && !array_key_exists($imagen, $imagenes_disponibles)) {
+        $errores[] = 'Seleccioná una foto de la lista.';
+    }
+    if (!$talles) {
+        $errores[] = 'Elegí al menos un talle o la opción Único.';
+    }
     $ids_categorias = array_map('strval', array_column($categorias, 'id'));
     if (!in_array($categoria_id, $ids_categorias, true)) {
         $errores[] = 'Seleccioná una categoría de la lista.';
@@ -55,8 +64,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $categorias_cargadas) {
     }
     if (empty($errores)) {
         try {
-            $sql = 'INSERT INTO productos (categoria_id, sku, nombre, descripcion, precio, activo)
-                    VALUES (:categoria_id, :sku, :nombre, :descripcion, :precio, :activo)';
+            $pdo->beginTransaction();
+            $sql = 'INSERT INTO productos (categoria_id, sku, nombre, descripcion, precio, activo, imagen)
+                    VALUES (:categoria_id, :sku, :nombre, :descripcion, :precio, :activo, :imagen)';
             $consulta = $pdo->prepare($sql);
             $consulta->execute([
                 'categoria_id' => $categoria_id,
@@ -65,11 +75,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $categorias_cargadas) {
                 'descripcion' => $descripcion,
                 'precio' => str_replace(',', '.', $precio),
                 'activo' => $activo,
+                'imagen' => $imagen !== '' ? $imagen : null,
             ]);
+            $id_guardado = (int) $pdo->lastInsertId();
+            guardar_talles($pdo, $id_guardado, $talles);
+            $pdo->commit();
             $_SESSION['aviso_productos'] = 'Producto agregado correctamente.';
             header('Location: index.php', true, 303);
             exit;
         } catch (PDOException $e) {
+            if ($pdo->inTransaction()) $pdo->rollBack();
             if (($e->errorInfo[1] ?? null) === 1062) {
                 http_response_code(422);
                 $errores[] = 'Ya existe un producto con ese código. Elegí otro.';
@@ -87,7 +102,7 @@ require_once __DIR__ . '/../includes/nav.php';
 ?>
 <main id="main-content" class="pagina-info gestion-productos">
     <h1>Agregar producto</h1>
-    <p>Completá los datos para guardar un producto en el catálogo de MySQL.</p>
+    <p>Completá los datos para publicar un producto en la tienda. Los productos activos aparecen en el catálogo.</p>
 
     <?php if ($errores): ?>
         <div class="aviso" role="alert">
@@ -100,7 +115,7 @@ require_once __DIR__ . '/../includes/nav.php';
         <input type="hidden" name="csrf" value="<?= escapar($_SESSION['csrf']) ?>">
 
         <label for="sku">Código del producto</label>
-        <input id="sku" name="sku" maxlength="40" pattern="[A-Za-z0-9][A-Za-z0-9_-]{0,39}" value="<?= escapar($sku) ?>" placeholder="TF-BUZ-H02" required>
+        <input id="sku" name="sku" maxlength="40" pattern="[A-Za-z0-9][A-Za-z0-9_\-]{0,39}" value="<?= escapar($sku) ?>" placeholder="TF-BUZ-H02" required>
 
         <label for="nombre">Nombre</label>
         <input id="nombre" name="nombre" maxlength="120" value="<?= escapar($nombre) ?>" required>
@@ -119,6 +134,8 @@ require_once __DIR__ . '/../includes/nav.php';
 
         <label for="descripcion">Descripción (opcional)</label>
         <textarea id="descripcion" name="descripcion" rows="4" maxlength="2000"><?= escapar($descripcion) ?></textarea>
+
+        <?php require __DIR__ . '/campos-catalogo.php'; ?>
 
         <label for="activo">Estado</label>
         <select id="activo" name="activo" required>

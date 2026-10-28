@@ -1,40 +1,15 @@
 <?php
-$titulo_pagina = "Accesorios | TF Clothing";
-$descripcion_pagina = "Descubrí los accesorios de TF Clothing para completar tu estilo urbano.";
-$categoria = "accesorios";
-
-require_once __DIR__ . '/includes/header.php';
-require_once __DIR__ . '/includes/nav.php';
+require_once __DIR__ . '/clase5/tienda.php';
+$titulo_pagina = 'Accesorios | TF Clothing';
+$resultados = array_values(array_filter($productos, fn($producto) => $producto['categoria'] === 'Accesorios'));
+require __DIR__ . '/includes/header.php';
+require __DIR__ . '/includes/nav.php';
 ?>
-
-<hr>
-
-<main id="main-content">
+<main id="main-content" class="pagina-catalogo">
+    <p class="sobretitulo">TF / COLECCIÓN</p>
     <h1>Accesorios</h1>
-
-    <div class="galeria">
-        <button id="btn-anterior">&#8592; Anterior</button>
-
-        <div>
-            <img
-                id="galeria-imagen"
-                src="imagenes/gorras.png"
-                alt="Producto accesorio"
-            >
-            <p id="galeria-nombre">Gorras</p>
-        </div>
-
-        <button id="btn-siguiente">Siguiente &#8594;</button>
-    </div>
-
-    <div id="modal-imagen" class="modal-oculto">
-        <span id="cerrar-modal">&times;</span>
-        <img id="modal-imagen-grande" src="" alt="Imagen ampliada">
-    </div>
-
-    <p><a href="index.php">Volver al inicio</a></p>
+    <p>Gorras, cintos, anillos y relojes para completar tu estilo.</p>
+    <p class="nota-precios">Precios orientativos en pesos argentinos para esta presentación.</p>
+    <?php require __DIR__ . '/clase5/tarjetas.php'; ?>
 </main>
-
-<hr>
-
-<?php require_once __DIR__ . '/includes/footer.php'; ?>
+<?php require __DIR__ . '/includes/footer.php'; ?>

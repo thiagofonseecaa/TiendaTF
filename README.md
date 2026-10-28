@@ -1,4 +1,4 @@
-# TF Clothing — Trabajo Práctico N° 4
+# TF Clothing
 
 Trabajo práctico de la materia Adaptación al Ambiente del Trabajo (AAT)
 
@@ -16,7 +16,7 @@ El prototipo corresponde al diseño inicial. La apariencia del sitio fue cambian
 - CSS3
 - JavaScript
 - PHP 8.2
-- XAMPP y Apache
+- XAMPP, Apache y MySQL
 - Git y GitHub
 
 ## Instalación y ejecución local
@@ -27,9 +27,10 @@ El prototipo corresponde al diseño inicial. La apariencia del sitio fue cambian
    git clone https://github.com/thiagofonseecaa/TiendaTF.git TiendaTF-main
 
 3. Copiar .env.example y renombrar la copia como .env en la raíz del proyecto.
-4. Completar APP_NAME, APP_EMAIL y APP_ENV en .env.
-5. Iniciar Apache desde el panel de XAMPP.
-6. Abrir http://localhost/TiendaTF-main/index.php en el navegador.
+4. Completar los datos del sitio y de MySQL en .env, siguiendo .env.example.
+5. Iniciar Apache y MySQL desde el panel de XAMPP.
+6. Para una instalación nueva, preparar la base siguiendo [Catálogo y pedidos](tienda/README.md#instalación-en-otro-equipo). En el equipo de desarrollo ya está actualizada.
+7. Abrir http://localhost/TiendaTF-main/index.php en el navegador.
 
 El sitio debe ejecutarse mediante Apache para que PHP procese las páginas.
 
@@ -70,10 +71,9 @@ El nombre configurado se utiliza en el pie de página y como título predetermin
 - Modo oscuro.
 - Galerías de productos con ampliación de imágenes.
 - Preguntas frecuentes desplegables.
-- Saludo de bienvenida una vez por sesión de pestaña al entrar al inicio.
 - Validación básica y resumen del formulario con JavaScript.
 
-El registro y el carrito forman parte de la maqueta. No se guardan usuarios ni se procesan compras.
+En el TP4, el registro y el carrito formaban parte de la maqueta. La versión actual guarda productos y pedidos en MySQL, como se explica en [Catálogo y compra](#catálogo-y-compra). El formulario de registro de la maqueta todavía no crea cuentas.
 
 ## Capturas de funcionamiento
 
@@ -170,3 +170,10 @@ Todas las consultas usan `prepare()` y `execute()` con parámetros. Los datos mo
 Para demostrarlo se puede crear un producto de práctica, cambiar su precio y eliminarlo desde la interfaz. Los cambios se pueden comprobar en phpMyAdmin. Un producto con pedidos asociados no se puede borrar; se informa esa restricción y se permite editar su estado.
 
 El desarrollo y las pruebas están explicados en [tp7/README.md](tp7/README.md). La pantalla de comprobación está en http://localhost/TiendaTF-main/tp7/prueba_conexion.php.
+
+
+## Catálogo y compra
+
+El catálogo comparte los productos de MySQL con Gestión de productos. El cliente puede armar su carrito y registrar un pedido con retiro en tienda y pago al retirar. Los pedidos recibidos se consultan desde Gestión de productos.
+
+El recorrido, los archivos y la actualización de la base están explicados en [Catálogo y pedidos](tienda/README.md). La actualización ya está aplicada en el entorno local. Para otro equipo hay que seguir ese orden de instalación después del TP6.

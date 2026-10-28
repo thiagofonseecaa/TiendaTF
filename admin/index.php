@@ -38,6 +38,7 @@ require_once __DIR__ . '/../includes/nav.php';
 ?>
 <main id="main-content" class="pagina-info gestion-productos">
     <h1>Gestión de productos</h1>
+    <p><a href="pedidos.php">Ver pedidos recibidos</a> · <a href="../clase5/buscar.php">Ver catálogo de la tienda</a></p>
     <p>Consultá los productos guardados en la base de datos de TF.</p>
     <?php if ($aviso !== ''): ?><p class="aviso" role="status"><?= escapar($aviso) ?></p><?php endif; ?>
     <p><a class="boton-tienda" href="crear.php">Agregar producto</a></p>

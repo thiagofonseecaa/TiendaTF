@@ -121,3 +121,32 @@ body.oscuro .nota-info,body.oscuro .tabla-info thead { background:#292929; }
 .acciones-producto .boton-eliminar:hover { background:#691b1b; }
 .confirmacion-producto { max-width:650px; margin-top:28px; }
 body.oscuro .gestion-productos .enlace-eliminar { color:#f4b0b0; }
+
+.talles-producto { display:flex; gap:15px; flex-wrap:wrap; border:1px solid var(--tf-linea); padding:15px; margin:22px 0; }
+.talles-producto label { display:flex; align-items:center; gap:5px; margin:0; }
+.talles-producto input { width:auto; margin:0; }
+.resumen-carrito .boton-tienda { display:block; text-align:center; }
+.compra-formulario { max-width:600px; margin:0; }
+.compra-formulario label { text-transform:none; letter-spacing:0; }
+.compra-formulario button { letter-spacing:0; text-transform:none; width:100%; }
+.resumen-compra { padding:0; list-style:none; }
+.resumen-compra li { padding:12px 0; border-bottom:1px solid var(--tf-linea); }
+.pasos-compra { font-size:13px; color:#746d64; }
+body.oscuro .nota-precios,body.oscuro .pasos-compra { color:#c8c2b8; }
+.compra-formulario h2 { text-align:left; font-size:20px; letter-spacing:0; text-transform:none; border:0; margin:28px 0 12px; } .compra-formulario p { text-align:left; }
+
+/* Quiénes somos */
+.pagina-nosotros { max-width:1050px; }
+.pagina-nosotros h1 { margin-bottom:32px; }
+.nosotros-contenido { display:grid; grid-template-columns:minmax(260px,360px) minmax(0,1fr); align-items:center; gap:48px; }
+.nosotros-imagen { margin:0; }
+.nosotros-imagen img { display:block; width:100%; max-width:360px; aspect-ratio:1; object-fit:cover; border-radius:6px; }
+.nosotros-texto p { text-align:left; }
+.nosotros-texto h2 { text-align:left; margin-top:28px; letter-spacing:1.5px; }
+.nosotros-volver { margin-top:28px; }
+.nosotros-volver a { color:inherit; text-underline-offset:4px; }
+@media(max-width:700px) {
+    .nosotros-contenido { grid-template-columns:1fr; gap:20px; }
+    .nosotros-imagen img { max-width:300px; margin:0 auto; }
+    .pagina-nosotros h1 { font-size:30px; }
+}

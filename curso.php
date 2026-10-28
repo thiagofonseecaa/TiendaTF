@@ -1,62 +1,18 @@
 <?php
-$titulo_pagina = "Curso de Styling Urbano | TF Clothing";
-$descripcion_pagina = "Aprendé a combinar prendas, colores, zapatillas y accesorios con el curso de styling urbano de TF Clothing.";
-
+$titulo_pagina = 'Curso de estilo | TF Clothing';
 require_once __DIR__ . '/includes/header.php';
 require_once __DIR__ . '/includes/nav.php';
 ?>
-
-<hr>
-
-<main id="main-content">
-    <h1>Curso: Styling Urbano</h1>
-    <p>Aprendé a combinar ropa y zapatillas para armar tu propio estilo urbano.</p>
-
-    <h2>Guía de estudio</h2>
-
-    <h2>1. Bases del styling urbano</h2>
-    <h3>1.1 Qué es el estilo urbano</h3>
-    <p>Origen del streetwear y su relación con la música y el skate.</p>
-
-    <h3>1.2 Prendas clave</h3>
-    <div class="galeria-curso">
-        <img src="imagenes/prendasclaves.png"
-             alt="Prendas claves" class="img-curso">
-    </div>
-    <p>Remeras básicas, jeans, zapatillas blancas, camisas y accesorios</p>
-
-    <h2>2. Combinación de colores</h2>
-    <h3>2.1 Colores neutros</h3>
-    <p>Cómo armar un outfit con blanco, negro y gris sin que se vea aburrido.</p>
-
-    <h3>2.2 Colores llamativos</h3>
-    <p>Cómo sumar un color fuerte sin recargar el conjunto.</p>
-
-    <h2>3. Zapatillas y accesorios</h2>
-    <h3>3.1 Cómo elegir las zapatillas</h3>
-    <div class="galeria-curso">
-        <img src="imagenes/zapatillasblancas.png"
-             alt="Zapatillas blancas" class="img-curso">
-        <img src="imagenes/zapatillasnegras.png"
-             alt="Zapatillas negras" class="img-curso">
-    </div>
-    <p>Qué modelo combina mejor según el resto del outfit.</p>
-
-    <h3>3.2 Accesorios urbanos</h3>
-    <div class="galeria-curso">
-        <img src="imagenes/gorra.png"
-             alt="Gorra" class="img-curso-chica">
-        <img src="imagenes/reloj.png"
-             alt="Reloj" class="img-curso-chica">
-        <img src="imagenes/neceser.png"
-             alt="Neceser" class="img-curso-chica">
-    </div>
-    <p>Gorras, reloj, neceser y cómo usarlas sin exagerar.</p>
-
-    <p>Contacto: <a href="mailto:cursos@tf.com">cursos@tf.com</a></p>
-    <p><a href="index.php">Volver al inicio</a></p>
+<main id="main-content" class="pagina-info">
+<p class="sobretitulo">TF CLOTHING</p>
+<h1>Curso de estilo</h1>
+<p class="intro-info">Un recorrido gratuito y breve para practicar con las prendas de TF. Leé cada paso y probá las combinaciones a tu ritmo.</p>
+<p class="nota-info">Contenido de lectura y práctica personal. No requiere inscripción ni ofrece certificado.</p>
+<section class="bloque-info"><p class="etiqueta-info">LECCIÓN 01</p><h2>Empezá por una prenda básica</h2><p>Elegí una remera lisa y un pantalón que te resulten cómodos. Usalos como base y después decidí si necesitás otra capa o algún accesorio.</p><p><strong>Ejemplo TF:</strong> remera azul y jean recto de hombre, o remera blanca y jogger de mujer.</p><p><strong>Práctica:</strong> armá un conjunto para un día de clases o una salida informal con dos prendas de tu guardarropa.</p></section>
+<section class="bloque-info"><p class="etiqueta-info">LECCIÓN 02</p><h2>Probá una combinación de colores</h2><p>Para este ejercicio, usá blanco, negro, gris o azul como base. Si querés sumar otro color, repetilo en un detalle o usalo en una sola prenda.</p><p><strong>Práctica:</strong> compará una combinación de dos colores con otra de tres. Elegí la que más te guste; no hay una única respuesta correcta.</p></section>
+<section class="bloque-info"><p class="etiqueta-info">LECCIÓN 03</p><h2>Prestá atención al calce</h2><p>Probá cómo se siente el conjunto al sentarte, caminar y levantar los brazos. Pensá si preferís ropa cercana al cuerpo o con más espacio.</p><p><strong>Práctica:</strong> compará dos prendas que ya tengas y anotá cuál te resulta más cómoda y por qué.</p><a href="guia-de-talles.php">Consultar la guía de talles</a></section>
+<section class="bloque-info"><p class="etiqueta-info">LECCIÓN 04</p><h2>Sumá un detalle propio</h2><p>Agregá una gorra, un cinto, un anillo o un reloj. Mirá el conjunto con y sin ese accesorio para decidir si te gusta el resultado.</p><p><strong>Práctica final:</strong> armá un conjunto completo y explicá qué elegiste por comodidad, qué elegiste por color y qué detalle representa tu estilo.</p><a href="accesorios.php">Ver accesorios TF</a></section>
+<a class="boton-tienda" href="clase5/buscar.php">Explorar el catálogo</a>
+<p class="volver-info"><a href="index.php">Volver al inicio</a></p>
 </main>
-
-<hr>
-
 <?php require_once __DIR__ . '/includes/footer.php'; ?>

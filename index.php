@@ -16,7 +16,6 @@ require_once __DIR__ . '/includes/header.php';
 <main id="main-content">
     <h1>TF - Ropa Urbana</h1>
     <p id="reloj"></p>
-    <h2>Destacados</h2>
     <h2>Categorías</h2>
 
     <div class="categorias-grid">

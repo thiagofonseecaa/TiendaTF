@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . '/../config/conexion.php';
 require_once __DIR__ . '/../clase5/tienda.php';
+require_once __DIR__ . '/opciones-producto.php';
 
 $base_sitio = '../';
 $titulo_pagina = 'Editar producto | TF Clothing';
@@ -10,6 +11,8 @@ $id = filter_var($id_recibido, FILTER_VALIDATE_INT, ['options' => ['min_range' =
 $sku = obtener_campo($_POST, 'sku');
 $nombre = obtener_campo($_POST, 'nombre');
 $descripcion = obtener_campo($_POST, 'descripcion');
+$imagen = obtener_campo($_POST, 'imagen');
+$talles = talles_recibidos($_POST);
 $categoria_id = obtener_campo($_POST, 'categoria_id');
 $precio = obtener_campo($_POST, 'precio');
 $activo = obtener_campo($_POST, 'activo');
@@ -23,7 +26,7 @@ if ($id === false) {
     $errores[] = 'Seleccioná un producto válido desde el listado.';
 } else {
     try {
-        $consulta = $pdo->prepare('SELECT sku, nombre, descripcion, categoria_id, precio, activo FROM productos WHERE id = :id');
+        $consulta = $pdo->prepare('SELECT sku, nombre, descripcion, categoria_id, precio, activo, imagen FROM productos WHERE id = :id');
         $consulta->execute(['id' => $id]);
         $producto_actual = $consulta->fetch();
         if (!$producto_actual) {
@@ -38,6 +41,10 @@ if ($id === false) {
                 $categoria_id = (string) $producto_actual['categoria_id'];
                 $precio = str_replace('.', ',', $producto_actual['precio']);
                 $activo = (string) $producto_actual['activo'];
+                $imagen = $producto_actual['imagen'] ?? '';
+                $consulta_talles = $pdo->prepare('SELECT talle FROM producto_talles WHERE producto_id = :id ORDER BY id');
+                $consulta_talles->execute(['id' => $id]);
+                $talles = $consulta_talles->fetchAll(PDO::FETCH_COLUMN);
             }
             $consulta = $pdo->prepare('SELECT id, nombre FROM categorias WHERE id > :id ORDER BY nombre ASC');
             $consulta->execute(['id' => 0]);
@@ -66,6 +73,12 @@ if ($es_post && $producto_encontrado && $categorias_cargadas) {
     if (mb_strlen($descripcion) > 2000) {
         $errores[] = 'La descripción no puede superar los 2000 caracteres.';
     }
+    if ($imagen !== '' && !array_key_exists($imagen, $imagenes_disponibles)) {
+        $errores[] = 'Seleccioná una foto de la lista.';
+    }
+    if (!$talles) {
+        $errores[] = 'Elegí al menos un talle o la opción Único.';
+    }
     $ids_categorias = array_map('strval', array_column($categorias, 'id'));
     if (!in_array($categoria_id, $ids_categorias, true)) {
         $errores[] = 'Seleccioná una categoría de la lista.';
@@ -81,9 +94,10 @@ if ($es_post && $producto_encontrado && $categorias_cargadas) {
     }
     if (empty($errores)) {
         try {
+            $pdo->beginTransaction();
             $sql = 'UPDATE productos
                     SET categoria_id = :categoria_id, sku = :sku, nombre = :nombre,
-                        descripcion = :descripcion, precio = :precio, activo = :activo
+                        descripcion = :descripcion, precio = :precio, activo = :activo, imagen = :imagen
                     WHERE id = :id';
             $consulta = $pdo->prepare($sql);
             $consulta->execute([
@@ -93,12 +107,16 @@ if ($es_post && $producto_encontrado && $categorias_cargadas) {
                 'descripcion' => $descripcion,
                 'precio' => str_replace(',', '.', $precio),
                 'activo' => $activo,
+                'imagen' => $imagen !== '' ? $imagen : null,
                 'id' => $id,
             ]);
+            guardar_talles($pdo, (int) $id, $talles);
+            $pdo->commit();
             $_SESSION['aviso_productos'] = 'Producto actualizado correctamente.';
             header('Location: index.php', true, 303);
             exit;
         } catch (PDOException $e) {
+            if ($pdo->inTransaction()) $pdo->rollBack();
             if (($e->errorInfo[1] ?? null) === 1062) {
                 http_response_code(422);
                 $errores[] = 'Ya existe un producto con ese código. Elegí otro.';
@@ -130,7 +148,7 @@ require_once __DIR__ . '/../includes/nav.php';
         <input type="hidden" name="csrf" value="<?= escapar($_SESSION['csrf']) ?>">
 
         <label for="sku">Código del producto</label>
-        <input id="sku" name="sku" maxlength="40" pattern="[A-Za-z0-9][A-Za-z0-9_-]{0,39}" value="<?= escapar($sku) ?>" placeholder="TF-BUZ-H02" required>
+        <input id="sku" name="sku" maxlength="40" pattern="[A-Za-z0-9][A-Za-z0-9_\-]{0,39}" value="<?= escapar($sku) ?>" placeholder="TF-BUZ-H02" required>
 
         <label for="nombre">Nombre</label>
         <input id="nombre" name="nombre" maxlength="120" value="<?= escapar($nombre) ?>" required>
@@ -149,6 +167,8 @@ require_once __DIR__ . '/../includes/nav.php';
 
         <label for="descripcion">Descripción (opcional)</label>
         <textarea id="descripcion" name="descripcion" rows="4" maxlength="2000"><?= escapar($descripcion) ?></textarea>
+
+        <?php require __DIR__ . '/campos-catalogo.php'; ?>
 
         <label for="activo">Estado</label>
         <select id="activo" name="activo" required>
