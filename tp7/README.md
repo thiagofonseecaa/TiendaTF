@@ -6,7 +6,7 @@ En este trabajo conecté PHP con la base tf_tienda_tp6 usando PDO. El módulo pe
 
 1. Iniciar Apache y MySQL en XAMPP.
 2. Abrir http://localhost/TiendaTF-main/admin/index.php.
-3. También se puede entrar desde Gestión de productos, en el pie de la tienda.
+3. Desde el TP8 hay que iniciar sesión con una cuenta administradora. El enlace Gestión de productos aparece en el pie para esa cuenta. Ver [preparación del acceso](../tp8/README.md).
 
 La base es la creada en el TP6. Si ya está cargada, no hay que volver a importar sus scripts. En una instalación nueva, importar tp6/schema.sql y después tp6/consultas.sql, una vez y en ese orden.
 

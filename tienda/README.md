@@ -12,7 +12,7 @@ El cliente puede elegir productos, armar su carrito y enviar un pedido con sus d
 6. La pantalla muestra el código y el detalle del pedido. El carrito queda vacío.
 7. Volver a Gestión de productos y entrar a Ver pedidos recibidos. Ahí se puede consultar el pedido y los datos para contactar al cliente.
 
-El recorrido registra un pedido en MySQL. No cobra tarjetas, no envía correos automáticos y no descuenta stock: esas funciones todavía no están implementadas. Los precios siguen siendo orientativos para la presentación. La gestión está preparada para la prueba local; el acceso con cuenta de administrador queda pendiente antes de publicar la tienda para clientes externos.
+El recorrido registra un pedido en MySQL. No cobra tarjetas, no envía correos automáticos y no descuenta stock: esas funciones todavía no están implementadas. Los precios siguen siendo orientativos para la presentación. Desde el TP8, la gestión requiere una cuenta administradora y cada cliente puede consultar los pedidos realizados con su sesión iniciada. La preparación del acceso se explica en [TP8](../tp8/README.md).
 
 ## Qué se guarda
 
@@ -21,7 +21,7 @@ El recorrido registra un pedido en MySQL. No cobra tarjetas, no envía correos a
 - pedidos: código, estado y datos de contacto de la compra.
 - detalle_pedidos: productos elegidos, talles, cantidades y precio unitario de ese momento.
 
-La compra es como invitado. No crea cuentas ni cambia los usuarios que ya existen. Por eso usuario_id permite NULL en los pedidos nuevos. El contacto que se ingresa queda asociado al pedido. Los pedidos anteriores del TP6 conservan su usuario.
+La compra puede hacerse como invitado o con una cuenta iniciada. El pedido usa el usuario_id de la sesión cuando corresponde; comprar no crea cuentas ni cambia los usuarios existentes. Por eso usuario_id permite NULL en los pedidos nuevos. El contacto que se ingresa queda asociado al pedido. Los pedidos anteriores del TP6 conservan su usuario.
 
 ## Archivos principales
 

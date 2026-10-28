@@ -7,7 +7,7 @@ Iniciar Apache y MySQL en XAMPP. Abrir la tienda desde localhost. La configuraci
 ## Recorrido para mostrar
 
 1. Mostrar el inicio, el logo TF y las categorías.
-2. Entrar a Gestión de productos desde el pie. Crear un producto de práctica con categoría, precio, talles y una foto de la lista.
+2. Iniciar sesión con la cuenta administradora y entrar a Gestión de productos desde el pie. Crear un producto de práctica con categoría, precio, talles y una foto de la lista.
 3. Ir al catálogo y buscar el nombre del producto. Mostrar que aparece con los datos recién guardados.
 4. Elegir el talle y agregarlo al carrito. Cambiar la cantidad para mostrar cómo cambia el total.
 5. Continuar la compra. Completar los datos de contacto, revisar el resumen y confirmar el pedido.
@@ -36,6 +36,13 @@ El carrito usa la sesión para recordar los ids de los productos, los talles y l
 
 ## Alcance
 
-La compra se registra como un pedido pendiente, con retiro en tienda y pago al retirar. No hay cobro online, descuento de stock ni envío automático de correos. Los precios son orientativos y las fotos de prendas son ilustrativas. La gestión se usa en el entorno local; antes de una publicación para clientes externos hay que incorporar el acceso de administrador.
+La compra se registra como un pedido pendiente, con retiro en tienda y pago al retirar. No hay cobro online, descuento de stock ni envío automático de correos. Los precios son orientativos y las fotos de prendas son ilustrativas. La gestión ya requiere una sesión de administrador. El despliegue público debe configurar HTTPS y la conexión de la base en ese servidor.
 
 El orden de instalación y los cambios de la base se explican en tienda/README.md.
+
+
+## Recorrido del TP8
+
+Crear una cuenta cliente, ingresar y mostrar Mi cuenta. Entrar a admin/index.php con esa cuenta para comprobar el rechazo por rol. Hacer un pedido y mostrarlo en Mis pedidos. Cerrar sesión y volver a abrir una página privada para comprobar la redirección al login. Finalmente ingresar con la cuenta administradora y mostrar Gestión de productos y los pedidos de la tienda.
+
+En el código, seguir registro.php → login.php → auth_guard.php → cuenta.php → logout.php. La configuración de la sesión está en config/sesion.php. El registro asigna cliente; el rol de administrador se prepara desde la terminal con la herramienta del TP8.

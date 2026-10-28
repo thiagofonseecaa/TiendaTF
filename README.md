@@ -73,7 +73,7 @@ El nombre configurado se utiliza en el pie de página y como título predetermin
 - Preguntas frecuentes desplegables.
 - Validación básica y resumen del formulario con JavaScript.
 
-En el TP4, el registro y el carrito formaban parte de la maqueta. La versión actual guarda productos y pedidos en MySQL, como se explica en [Catálogo y compra](#catálogo-y-compra). El formulario de registro de la maqueta todavía no crea cuentas.
+En el TP4, el registro y el carrito formaban parte de la maqueta. La versión actual guarda productos y pedidos en MySQL, como se explica en [Catálogo y compra](#catálogo-y-compra). Desde el TP8, el registro crea cuentas en MySQL y el acceso se controla con sesiones y roles.
 
 ## Capturas de funcionamiento
 
@@ -177,3 +177,10 @@ El desarrollo y las pruebas están explicados en [tp7/README.md](tp7/README.md).
 El catálogo comparte los productos de MySQL con Gestión de productos. El cliente puede armar su carrito y registrar un pedido con retiro en tienda y pago al retirar. Los pedidos recibidos se consultan desde Gestión de productos.
 
 El recorrido, los archivos y la actualización de la base están explicados en [Catálogo y pedidos](tienda/README.md). La actualización ya está aplicada en el entorno local. Para otro equipo hay que seguir ese orden de instalación después del TP6.
+
+
+## TP8 - Sesiones y autenticación
+
+El registro guarda usuarios con contraseña hasheada. El login verifica la contraseña con password_verify(), regenera el identificador de sesión y permite entrar según el rol. Mi cuenta y Mis pedidos requieren sesión; Gestión de productos y el listado general de pedidos requieren administrador. El cierre de sesión elimina los datos y su cookie.
+
+Se ingresa desde el icono de cuenta o Iniciar sesión en el pie de la tienda. La explicación paso a paso, la preparación del administrador y las pruebas están en [TP8](tp8/README.md).
