@@ -1,10 +1,6 @@
 <?php
-require_once __DIR__ . '/funciones.php';
+require_once __DIR__ . '/../config/autenticacion.php';
 require_once __DIR__ . '/catalogo.php';
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
-$_SESSION['csrf'] ??= bin2hex(random_bytes(32));
 $_SESSION['carrito'] ??= [];
 
 // Los números de la lista anterior no eran los mismos ids de MySQL.
