@@ -37,6 +37,7 @@ function csrf_valido(array $datos): bool
 
 function mostrar_error_acceso(int $codigo, string $mensaje): never
 {
+    global $productos, $pdo, $nombre_sitio;
     http_response_code($codigo);
     $titulo_pagina = 'Acceso a tu cuenta | TF Clothing';
     $base_sitio = url_tienda();

@@ -1,6 +1,7 @@
 <?php
 // Se configura antes de enviar HTML y se comparte entre la cuenta y el carrito.
 if (session_status() === PHP_SESSION_NONE) {
+    session_name('TFSESSID');
     ini_set('session.use_strict_mode', '1');
     ini_set('session.use_only_cookies', '1');
     ini_set('session.use_trans_sid', '0');

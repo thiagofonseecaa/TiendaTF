@@ -1,4 +1,6 @@
 <?php
+require_once __DIR__ . '/../auth_guard.php';
+verificar_rol('admin');
 $talles_disponibles = ['S', 'M', 'L', 'XL', '6', '8', '10', '12', 'Único'];
 $imagenes_disponibles = [
     'clase5/imagenes/remera-clasica.png' => 'Remera azul',

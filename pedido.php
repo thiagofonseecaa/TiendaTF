@@ -35,5 +35,6 @@ require __DIR__ . '/includes/nav.php';
     <p>El pedido quedó registrado. La tienda usará los datos que ingresaste para coordinar su confirmación y retiro.</p>
     <p class="nota-precios">Precios orientativos para esta presentación.</p>
     <a class="boton-tienda" href="clase5/buscar.php">Volver al catálogo</a>
+    <?php if (esta_autenticado()): ?><p><a href="mis-pedidos.php">Ver mis pedidos</a></p><?php endif; ?>
 </main>
 <?php require __DIR__ . '/includes/footer.php'; ?>

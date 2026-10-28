@@ -7,7 +7,10 @@
     <h3><a href="<?= escapar($base_sitio) ?>guia-de-talles.php">Guía de talles</a></h3>
     <h3><a href="<?= escapar($base_sitio) ?>curso.php">Curso: Styling Urbano</a></h3>
     <h3><a href="<?= escapar($base_sitio) ?>cv.php">Trabajá con nosotros</a></h3>
+    <?php if (es_administrador()): ?>
     <h3><a href="<?= escapar($base_sitio) ?>admin/index.php">Gestión de productos</a></h3>
+    <?php endif; ?>
+    <h3><a href="<?= escapar($base_sitio) ?><?= esta_autenticado() ? 'cuenta.php' : 'login.php' ?>"><?= esta_autenticado() ? 'Mi cuenta' : 'Iniciar sesión' ?></a></h3>
 <p>© <?= date("Y"); ?> <?= htmlspecialchars($nombre_sitio, ENT_QUOTES, 'UTF-8'); ?> - Todos los derechos reservados</p>
 </footer>
 

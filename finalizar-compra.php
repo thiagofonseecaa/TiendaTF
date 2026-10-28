@@ -1,8 +1,9 @@
 <?php
 require_once __DIR__ . '/clase5/tienda.php';
+if (esta_autenticado()) require_once __DIR__ . '/auth_guard.php';
 $es_post = $_SERVER['REQUEST_METHOD'] === 'POST';
-$nombre = obtener_campo($_POST, 'nombre');
-$email = obtener_campo($_POST, 'email');
+$nombre = $es_post ? obtener_campo($_POST, 'nombre') : ($_SESSION['usuario_nombre'] ?? '');
+$email = $es_post ? obtener_campo($_POST, 'email') : ($_SESSION['usuario_email'] ?? '');
 $telefono = obtener_campo($_POST, 'telefono');
 $errores = [];
 $resumen = resumen_carrito();
@@ -56,8 +57,8 @@ if ($es_post) {
                 if (!$estado_id) throw new RuntimeException('Falta el estado pendiente.');
                 $codigo = 'TF-' . strtoupper(substr(hash('sha256', $_SESSION['compra']['clave']), 0, 20));
                 $consulta = $pdo->prepare('INSERT INTO pedidos (codigo, usuario_id, estado_id, nombre_cliente, email_cliente, telefono_cliente)
-                    VALUES (:codigo, NULL, :estado_id, :nombre, :email, :telefono)');
-                $consulta->execute(['codigo' => $codigo, 'estado_id' => $estado_id, 'nombre' => $nombre, 'email' => $email, 'telefono' => $telefono]);
+                    VALUES (:codigo, :usuario_id, :estado_id, :nombre, :email, :telefono)');
+                $consulta->execute(['codigo' => $codigo, 'usuario_id' => esta_autenticado() ? $_SESSION['usuario_id'] : null, 'estado_id' => $estado_id, 'nombre' => $nombre, 'email' => $email, 'telefono' => $telefono]);
                 $pedido_id = (int) $pdo->lastInsertId();
                 $consulta = $pdo->prepare('INSERT INTO detalle_pedidos (pedido_id, producto_id, talle, cantidad, precio_unitario)
                     VALUES (:pedido_id, :producto_id, :talle, :cantidad, :precio_unitario)');

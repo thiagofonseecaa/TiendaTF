@@ -1,3 +1,7 @@
+<?php
+require_once __DIR__ . '/../auth_guard.php';
+verificar_rol('admin');
+?>
         <label for="imagen">Foto del producto (opcional)</label>
         <select id="imagen" name="imagen">
             <option value="">Sin foto</option>
