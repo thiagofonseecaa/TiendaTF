@@ -6,7 +6,7 @@ En este trabajo migré las 16 páginas de HTML a PHP y separé el encabezado, el
 
 ## Prototipo original
 
-[Ver el diseño en Figma](https://www.figma.com/make/tv5U9vIkVLTHbOQ5vmi3XA/E-commerce-Clothing-Website-Wireframes)
+[Ver el diseño en Figma](https://many-gale-77759898.figma.site/)
 
 El prototipo corresponde al diseño inicial. La apariencia del sitio fue cambiando durante el desarrollo.
 
